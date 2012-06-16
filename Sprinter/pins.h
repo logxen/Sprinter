@@ -403,11 +403,15 @@
 #if MOTHERBOARD == 3
 #define KNOWN_BOARD 1
 
-//////////////////FIX THIS//////////////
-#ifndef __AVR_ATmega1280__
- #ifndef __AVR_ATmega2560__
+// make sure Arduino Mega is selected in the ide
+#ifdef __AVR_ATmega1280__
+ #define __AVR_ATmega___ 1280
+#endif
+#ifdef __AVR_ATmega2560__
+ #define __AVR_ATmega___ 2560
+#endif
+#ifndef __AVR_ATmega___
  #error Oops!  Make sure you have 'Arduino Mega' selected from the 'Tools -> Boards' menu.
- #endif
 #endif
 
 // uncomment one of the following lines for RAMPS v1.3 or v1.0, comment both for v1.2 or 1.1
